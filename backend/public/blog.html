@@ -14,11 +14,24 @@
         console.log("displayArtilcles", data)
         
         const container = document.querySelector('#blog')
+        container.innerHTML = ""
         data.map(x => {
+            /** Image **/
             const image = document.createElement('img')
             image.setAttribute('src', x.thumbnail.url)
 
             container.appendChild(image)
+
+            /** Title **/
+            const title = document.createElement('h3')
+            title.innerText = x.title
+            container.appendChild(title)
+
+            /** Content **/
+            const conents = document.createElement('div')
+            conents.innerText = x.content
+            container.appendChild(conents)
+
         })
     }
     displayArtilcles()
