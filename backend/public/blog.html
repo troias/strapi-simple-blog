@@ -1,0 +1,25 @@
+<div>
+    <h2>The blog</h2>
+    <div id="blog">
+        Write Articles
+    </div>
+
+</div>
+
+<script>
+    const API_URL = 'http://host.docker.internal:1337/articles'
+    const displayArtilcles = async () => {
+        const res = await fetch(API_URL)
+        const data = await res.json()
+        console.log("displayArtilcles", data)
+        
+        const container = document.querySelector('#blog')
+        data.map(x => {
+            const image = document.createElement('img')
+            image.setAttribute('src', x.thumbnail.url)
+
+            container.appendChild(image)
+        })
+    }
+    displayArtilcles()
+</script>
